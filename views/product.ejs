@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping</title>
+    <link rel="stylesheet" href="../styling/product.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/dashboard">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="product-list">
+            <div class="product">
+                <img src="<%=obj.images%>" width="500px" height="400px" alt="Product 1">
+                <h3><%=obj.title%></h3>
+                <h3>Price = <%=obj.price%></h3>
+                <h4><%=obj.description%></h4>
+                <button class="btn">Add to Cart</button>
+            </div>    
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Online Shopping</p>
+    </footer> 
+</body>
+</html>

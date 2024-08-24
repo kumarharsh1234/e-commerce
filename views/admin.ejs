@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="../styling/admin.css">
+</head>
+<body>
+    <header>
+        <h1 id="h">Welcome <%=name%>
+        </h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/adminCart">Cart</a>
+        <a href="/logout" id="logout">Logout</a>
+    </nav>
+        <div id="container">
+            <%data.forEach((ele)=>{
+                %>
+                <div class="item" id="<%=ele._id%>">
+                    <img src="<%=ele.images%>" alt="image">
+                    <div id="item-details">
+                        <h3>
+                            <%=ele.title%>
+                        </h3>
+                        <p>Total Stock = <%=ele.stock%>
+                        </p>
+                        <p>Price=<%=ele.price%>
+                        </p>
+                    </div>
+                    <a href="/removeItem/<%=ele._id%>"><button class="removeBtn" id="btn">Remove item</button></a>
+                    <a href="/updateForm/<%=ele._id%>"><button class="updateBtn" id="btn">Update item</button></a>
+                    <button class="addtocart" id="btn">Add to Cart</button>
+                </div>
+                <%})%>
+        </div>
+</body>
+<script>
+    const data = document.getElementsByClassName("addtocart");
+    console.log(data);
+    for(i = 0; i<data.length; i++){
+        data[i].addEventListener('click', async(e)=>{
+                id=e.target.parentNode.id;
+                console.log(id);
+            await fetch("/acart", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({id})});
+        })
+    }
+</script>
+</html>

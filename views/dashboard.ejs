@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Online Store</title>
+    <link rel="stylesheet" href="../styling//dashboard.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome <%=username%></h1>
+    </header>
+    <%- include("comman/header") %>
+    <!-- <button><a href="/logout">Logout</a></button> -->
+    <section class="collection">
+        <div class="products-container"> 
+            <%data.forEach((ele)=>{
+                %>
+                <div class="product" id="<%=ele._id%>">
+                    <a href="/<%=ele._id%>"><img src="<%=ele.images%>" height="300px" width="300px" alt="image"></a>
+                    <p><%=ele.title%></p>
+                    <p>Price=<%=ele.price%></p>
+                    <button class="addtocart">Add to Cart</button>
+                </div>
+            <%})%>
+    </div>
+    </section>
+    <%-include("comman/footer")-%>
+</body>
+<script>
+    const data = document.getElementsByClassName("addtocart");
+    for(i = 0; i<data.length; i++){
+        data[i].addEventListener('click', async(e)=>{
+                id=e.target.parentNode.id;
+                console.log(id);
+            await fetch("/cart", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({id})});
+        })
+    }
+    </script>
+</html>

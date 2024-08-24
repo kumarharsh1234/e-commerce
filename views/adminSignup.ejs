@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Sign-Up</title>
+    <link rel="stylesheet" href="../styling/adminSignup.css">
+</head>
+<body>
+    <nav>
+        <a href="./">Home</a>
+    </nav>
+    <form method="POST" action="/adminS">
+        <h2>Admin Sign-Up</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter Username" required>
+        <input type="hidden" id="email" name="role" value="admin">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+        <!-- You can add more fields here if needed -->
+
+        <input type="submit" value="Sign-Up" id="btn">
+
+        <div class="signup-message">
+            
+            <b style="color: #333;">Do have an account?</b> <a href="./admin">Login</a>
+        </div>
+    </form>
+</body>
+</html>

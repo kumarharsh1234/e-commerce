@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../styling/login.css">
+</head>
+<body>
+    <nav>
+        <a href="./">Home</a>
+    </nav>
+    <form method="POST" action="/login">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required placeholder="Enter Username">
+        <input type="hidden" id="email" name="role" value="admin">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required placeholder="Enter Password">
+        <!-- You can add more fields here if needed -->
+        <input type="submit" value="Log In" id="btn">
+        <h3><%=message%></h3>
+        <div class="signup-message">
+            <b style="color: #333;">Don't have an account?</b> <a href="./adminsignup.html">Create Account</a>
+        </div>
+    </form>
+</body>
+</html>

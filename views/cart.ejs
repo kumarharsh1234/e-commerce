@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="./styling/cart.css"/>
+</head>
+<body>
+    <header>
+		<a href="index.html" class="logo">My Cart</a>
+		<nav>
+			<ul>
+				<li><a href="/dashboard">Home</a></li>
+			</ul>
+		</nav>
+	</header>
+    <div class="cart">
+        <% let totalAmount=0%>
+        <%d.forEach((ele)=>{
+            %>
+		<div class="cart-item" id="<%=ele._id%>">
+			<img src="<%=ele.image%>" alt="Product 1" class="product-image">
+			<div class="product-details" id="<%=ele._id%>">
+				<h2 class="product-name"><%=ele.title%></h2>
+				<div class="quantity" id="<%=ele._id%>">
+					<button class="minus-btn">-</button>
+					<input type="text" value="<%=ele.quantity%>" min="1" max="100" class="quantity-input" placeholder="asas"/>
+					<button class="plus-btn">+</button>
+				</div>
+                <%totalAmount+=ele.price*ele.quantity%>
+				<div class="price">Price=<%=ele.price%></div>
+				<button class="remove-btn">Remove</button>
+			</div>
+        </div>
+            <%})%>
+		<div class="cart-summary">
+			<div class="subtotal">Subtotal: <%=totalAmount%></div>
+			<button class="checkout-btn">Checkout</button>
+		</div>
+        </div>
+    <script>
+        const data=document.getElementsByClassName("remove-btn");
+        const data1=document.getElementsByClassName("minus-btn");
+        const data2=document.getElementsByClassName("plus-btn");
+        console.log(data1);
+        for(let i=0;i<data.length;i++){
+            data[i].addEventListener("click",async(e)=>{
+                let id=e.target.parentNode.id;
+                console.log(id);
+                await fetch("/remove",{method : "POST", headers:{"Content-Type":"application/json"},body:JSON.stringify({id})});
+            })
+        }
+        for(let i=0;i<data1.length;i++){
+            data1[i].addEventListener("click",async(e)=>{
+                let id=e.target.parentNode.id;
+                console.log(id);
+                await fetch("/qtyminus",{method : "POST", headers:{"Content-Type":"application/json"},body:JSON.stringify({id})});
+            })
+        }
+        for(let i=0;i<data2.length;i++){
+            data2[i].addEventListener("click",async(e)=>{
+                let id=e.target.parentNode.id;
+                console.log(id);
+                await fetch("/qtyadd",{method : "POST", headers:{"Content-Type":"application/json"},body:JSON.stringify({id})});
+            })
+        }
+    </script>
+</body>
+</html>

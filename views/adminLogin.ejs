@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../styling/adminLogin.css">
+</head>
+<body>
+    <nav>
+        <a href="./">Home</a>
+    </nav>
+    <form method="POST" action="/adminLogin">
+        <h2>Admin Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter admin username" required>
+        <input type="hidden" id="email" name="role" value="admin">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter admin password" required>
+
+        <!-- You can add more fields here if needed -->
+
+        <input type="submit" value="Log In" id="btn">
+
+        <div class="signup-message">
+            
+            <b style="color: #333;">Don't have an account?</b><a href="./adminSignup">Create Account</a>
+        </div>
+    </form>
+</body>
+</html>
